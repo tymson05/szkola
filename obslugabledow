@@ -1,0 +1,75 @@
+using Microsoft.SqlServer.Server;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            c();
+        }
+        static void a()
+        {
+            int a, b;
+            bool test = false;
+            try
+            {
+                Console.WriteLine("Podaj Liczbe");
+                a = int.Parse(Console.ReadLine());
+                Console.WriteLine("Druga");
+                b = int.Parse(Console.ReadLine());
+                test = true;
+                Console.WriteLine(a / b);
+            }
+            catch (Exception blad) //when (test)
+            {
+                Console.WriteLine(blad.Message);
+            }
+        }
+        static void b()
+        {
+            int a, b;
+            try
+            {
+                Console.WriteLine("Podaj Liczbe");
+                a = int.Parse(Console.ReadLine());
+                Console.WriteLine("Druga");
+                b = int.Parse(Console.ReadLine());
+                Console.WriteLine(a + b);
+            }
+            catch (FormatException blad)
+            {
+                Console.WriteLine("Błędny format");
+                Console.WriteLine(blad.Message);
+            }
+            catch(OverflowException blad) {
+                Console.WriteLine("Rozmiar");
+                Console.WriteLine(blad.Message);
+            }
+            catch (Exception blad){
+                Console.WriteLine("wszystkie inne bledy");
+            }
+        }
+        static void c()
+        {
+            int a = 2147483647;
+            a =+ a;
+            Console.WriteLine(a);
+        }
+
+        private static void bledy6()
+        {
+            int liczba = int.MaxValue;
+            checked
+            {
+                int zglosiWyjatek = liczba++;
+                Console.WriteLine("Ta intrukcja nie zostanie wykonana");
+            }
+        }
+    }
+}
